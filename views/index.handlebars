@@ -1,41 +1,22 @@
 <h1>burgers!</h1>
-
 <div>
   <h2>Are you Ready to eat these?</h2>
-  {{!-- {{#each burgers}}
-        <div class='list'>
-          {{id}}. {{burger_name}}
-        </div>
-    {{/each}} --}}
-    {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/burger-block devoured=1}}
-    {{/unless}}
-    {{/each}}
-</div>
-
-
-  
-<div>
-  <h2>You Haven't eaten these yet</h2>
    {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/burger-block devoured=0}}
-    {{/unless}}
-    {{/each}}
-</div>
-
-{{!-- <div class='buttons'>
-    {{#each burgers}}
-      {{#unless devoured}}
-        <div class='list'>
-          <button class="change-devoured" data-id="{{id}}">
-            DEVOUR
-          </button>
-        </div>
+   {{#unless devoured}}
+      {{> burgers/burger-block devoured=true}}
       {{/unless}}
     {{/each}}
-</div> --}}
+</div>
+
+<div>
+  <h2>Already Eaten</h2>
+    {{#each burgers}}
+    {{#if devoured}}
+      {{> burgers/burger-block devoured=false}}
+    {{/if}}
+    {{/each}}
+</div>
+
 
 
 <form class="create-form">
@@ -45,5 +26,5 @@
     <input style="height:200px", "width:200px" type="text" id="burger" name="name">
   </div>
 
-  <button type="submit">Add burger</button>
+  <button type="submit" id="addBurger"> Add burger</button>
 </form>
